@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI StudyBuddy - Team 3</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="logo"><span>🤖</span><b>AI StudyBuddy</b></div>
+  <nav>
+    <button class="active" onclick="openPage('home',this)">🏠 Dashboard</button>
+    <button onclick="openPage('planner',this)">📅 Study Planner</button>
+    <button onclick="openPage('quiz',this)">🧠 Quick Quiz</button>
+    <button onclick="openPage('notes',this)">📝 Smart Notes</button>
+    <button onclick="openPage('assistant',this)">💬 AI Assistant</button>
+    <button onclick="openPage('team',this)">👥 Team & Project</button>
+  </nav>
+  <div class="team">Team 3<br>Pavithra L<br>Madhan Kumar M<br>Yashwanth R<br>Tamilselvan D</div>
+</aside>
+
+<main>
+<header>
+  <div><h1 id="title">Good morning 👋</h1><p>Personalized student learning dashboard</p></div>
+  <div class="avatar">S</div>
+</header>
+
+<section id="home" class="page active">
+<div class="stats">
+  <div class="card"><small>Study Streak</small><strong>7 days</strong></div>
+  <div class="card"><small>Completed Tasks</small><strong id="count">8</strong></div>
+  <div class="card"><small>Study Hours</small><strong>24.5</strong></div>
+  <div class="card"><small>Quiz Score</small><strong>82%</strong></div>
+</div>
+<div class="columns">
+<div class="card">
+<h2>Today's Progress</h2>
+<div class="progress-row"><div class="progress"><i id="bar"></i></div><b id="pct">50%</b></div>
+<div id="tasks">
+  <div class="task"><input type="checkbox" checked onchange="refresh()"><span>Review HTML & CSS concepts</span></div>
+  <div class="task"><input type="checkbox" checked onchange="refresh()"><span>Practice JavaScript arrays</span></div>
+  <div class="task"><input type="checkbox" onchange="refresh()"><span>Complete AI fundamentals</span></div>
+  <div class="task"><input type="checkbox" onchange="refresh()"><span>Take practice quiz</span></div>
+</div>
+</div>
+<div class="card chat"><h2>🤖 Study Assistant</h2>
+<div class="messages" id="homeChat"><div class="msg bot">Hi! Ask me about HTML, CSS, JavaScript, Python or study planning.</div></div>
+<form onsubmit="ask(event,'homeChat','homeInput')"><input id="homeInput" placeholder="Ask a question..." required><button>Send</button></form>
+</div>
+</div>
+</section>
+
+<section id="planner" class="page">
+<div class="card"><h2>📅 Study Planner</h2><p>Add study tasks and mark them complete.</p>
+<form onsubmit="addTask(event)"><input id="taskInput" placeholder="Example: Study Python functions" required><button>Add Task</button></form>
+<div id="taskList"></div></div>
+</section>
+
+<section id="quiz" class="page">
+<div class="card quiz"><h2>🧠 Quick Quiz</h2>
+<p><b>1. Which language creates the structure of a webpage?</b></p>
+<label><input type="radio" name="q1" value="HTML"> HTML</label>
+<label><input type="radio" name="q1" value="CSS"> CSS</label>
+<label><input type="radio" name="q1" value="Python"> Python</label>
+<p><b>2. Which language adds webpage interactivity?</b></p>
+<label><input type="radio" name="q2" value="JavaScript"> JavaScript</label>
+<label><input type="radio" name="q2" value="HTML"> HTML</label>
+<label><input type="radio" name="q2" value="CSS"> CSS</label>
+<button onclick="checkQuiz()">Submit Quiz</button><h3 id="result"></h3></div>
+</section>
+
+<section id="notes" class="page">
+<div class="card"><h2>📝 Smart Notes</h2>
+<textarea id="notesBox" placeholder="Type your study notes here..."></textarea>
+<button onclick="saveNotes()">Save Notes</button>
+<button class="secondary" onclick="clearNotes()">Clear</button>
+<p id="noteStatus"></p></div>
+</section>
+
+<section id="assistant" class="page">
+<div class="card chat large"><h2>💬 AI Study Assistant</h2>
+<div class="messages" id="mainChat"><div class="msg bot">Welcome! Try "Explain HTML", "Explain JavaScript" or "Plan my study".</div></div>
+<form onsubmit="ask(event,'mainChat','mainInput')"><input id="mainInput" placeholder="Ask your study question..." required><button>Send</button></form>
+</div></section>
+
+<section id="team" class="page">
+<div class="card">
+<h2>👥 Team 3 — Project Information</h2>
+<div class="teamgrid">
+<div><small>Project Title</small><h3>AI StudyBuddy</h3></div>
+<div><small>Project Type</small><h3>AI / Student Learning Assistant</h3></div>
+</div>
+<h2>Team Members</h2>
+<div class="members">
+<div>👑 Pavithra L</div><div>🔵 Madhan Kumar M</div><div>🔵 Yashwanth R</div><div>🔵 Tamilselvan D</div>
+</div>
+<h2>Submission Checklist</h2>
+<label><input type="checkbox"> Public GitHub repository</label>
+<label><input type="checkbox"> Project files uploaded</label>
+<label><input type="checkbox"> Demo video recorded</label>
+<label><input type="checkbox"> Google Drive set to Anyone with the link</label>
+<label><input type="checkbox"> Google Form submitted</label>
+</div>
+</section>
+</main>
+</div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
